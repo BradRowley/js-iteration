@@ -24,6 +24,7 @@
  */
 
 const yelling = words => {
+  return words.map(word => word.toUpperCase())
   // Your code here
 }
 
@@ -36,7 +37,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+function doubleTrouble(numbers) {
+  return numbers.map(number => number * 2)
+}
 // ...
 
 /*
@@ -47,6 +50,8 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
+const stringyIndexes = strings =>
+  strings.map((name, index) => `${name} is at index ${index}`)
 
 // ...
 
@@ -57,7 +62,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+function onlyTheEvenSurvive(numbers) {
+  return numbers.filter(number => number % 2 === 0)
+}
 // ...
 
 /*
@@ -67,8 +74,11 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
-// ...
+function onlyTheEvenIndexedSurvive(numbers) {
+  const onlyEvenIndexes = numbers.filter((number, index) => index % 2 === 0)
+  return onlyEvenIndexes
+}
+// // ...
 
 /*
  * 6)  Define a function bestMoviesOfTheYear that accepts an array of
@@ -86,7 +96,14 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
+function bestMoviesOfTheYear(movies, year) {
+  const certainMovies = movies.filter(
+    movie => movie.score > 90 && movie.year === year
+  )
 
+  const movieNames = certainMovies.map(movie => movie.name)
+  return movieNames
+}
 // ...
 
 /*
@@ -97,7 +114,9 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+function everyoneIsOdd(numbers) {
+  return numbers.every(number => number % 2 === 1)
+}
 // ...
 
 /*
@@ -108,9 +127,10 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
-// ...
-
+function findTheNeedle(strings) {
+  const whereTheNeedle = strings.find(string => string.includes('needle'))
+  return whereTheNeedle
+}
 /*
  * 9) Define a function findTheNeedleIndex that accepts an array of
  * strings and returns the index of the string that contains
@@ -119,9 +139,14 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+// function findTheNeedleIndex(strings) {
+//   return strings.indexOf('needle')
+// }
 // ...
-
+function findTheNeedleIndex(strings) {
+  const whereTheNeedle = strings.findIndex(string => string.includes('needle'))
+  return whereTheNeedle
+}
 /*
  *` 10)  Define a function someoneToLove that accepts an array of
  * strings and returns true if at least one string is exactly
@@ -130,7 +155,10 @@ const yelling = words => {
  * NOTE: You may *not* use the `forEach` or `for` method.
  *
  */
-
+function someoneToLove(strings) {
+  const characterLong = strings.some(string => string.length === 4)
+  return characterLong
+}
 // ...
 
 /*
@@ -167,8 +195,20 @@ const yelling = words => {
  */
 
 // function objectKeys(objectOfHobbies) {
-//   // Your code here
+//   const hobbyKeys = Object.keys(objectOfHobbies)
+//   const answer = hobbyKeys.map(
+//     hobbyKey => `${hobbyKey}  - ${objectOfHobbies[hobbyKey].title}`
+//   )
+//   return answer
 // }
+function objectKeys(objectOfHobbies) {
+  const answer = Object.entries(objectOfHobbies).map(
+    ([key, value]) => `${key} - ${value.title}`
+  )
+  return answer
+}
+//   // Your code here
+//
 
 // ...
 
@@ -242,7 +282,7 @@ const tests = [
     }
   },
   {
-    methodName: 'stringyIndex',
+    methodName: 'stringyIndexes',
     test: () => {
       return compare(stringyIndexes(['how', 'now', 'brown', 'cow']), [
         'how is at index 0',
@@ -264,7 +304,7 @@ const tests = [
     }
   },
   {
-    methodName: 'onlyTheEvenIndexSurvive',
+    methodName: 'onlyTheEvenIndexedSurvive',
     test: () => {
       return compare(
         onlyTheEvenIndexedSurvive([
